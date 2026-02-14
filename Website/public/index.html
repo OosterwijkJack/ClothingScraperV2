@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothes Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            transition: transform 0.3s ease;
+        }
+
+        .card-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 15px;
+            background: white;
+            flex-grow: 1;
+        }
+
+        .label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            padding: 40px;
+        }
+
+        .error {
+            text-align: center;
+            color: #ff6b6b;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <button id="kill">Kill All Clothes</button>
+    <div class="container">
+        <h1>Clothes Gallery</h1>
+        <div id="gallery" class="gallery">
+            <div class="loading">Loading clothes...</div>
+        </div>
+    </div>
+
+    <script>
+        const ITEMS_PER_CHUNK = 20; // Number of items to load at once
+        let allClothes = [];
+        let currentIndex = 0;
+        let isLoading = false;
+
+        async function loadClothes() {
+            const gallery = document.getElementById('gallery');
+            
+            try {
+                const response = await fetch('/api/clothes');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch clothes');
+                }
+                
+                allClothes = await response.json();
+                
+                if (allClothes.length === 0) {
+                    gallery.innerHTML = '<div class="loading">No clothes found in database</div>';
+                    return;
+                }
+                
+                gallery.innerHTML = ''; // Clear loading message
+                loadNextChunk();
+                setupIntersectionObserver();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                gallery.innerHTML = `<div class="error">Error loading clothes: ${error.message}</div>`;
+            }
+        }
+
+        function loadNextChunk() {
+            if (isLoading || currentIndex >= allClothes.length) return;
+            
+            isLoading = true;
+            const gallery = document.getElementById('gallery');
+            const endIndex = Math.min(currentIndex + ITEMS_PER_CHUNK, allClothes.length);
+            const chunk = allClothes.slice(currentIndex, endIndex);
+            
+            const fragment = document.createDocumentFragment();
+            
+            chunk.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <a href="${item.link}" target="_blank" class="card-image">
+                        <img data-src="${item.img_link}" alt="${item.description}" class="lazy-image"
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23f0f0f0' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23999' font-family='sans-serif' font-size='14'%3ELoading...%3C/text%3E%3C/svg%3E"
+                             onerror="this.src='https://via.placeholder.com/200x200?text=Image+Not+Found'">
+                    </a>
+                    <div class="card-content">
+                        <div class="label">Price</div>
+                        <div class="price">$${parseFloat(item.price).toFixed(2)}</div>
+                        <div class="label">Description</div>
+                        <div class="description">${item.description}</div>
+                    </div>
+                `;
+                fragment.appendChild(card);
+            });
+            
+            gallery.appendChild(fragment);
+            currentIndex = endIndex;
+            
+            // Lazy load images for the new chunk
+            lazyLoadImages();
+            
+            isLoading = false;
+        }
+
+        function lazyLoadImages() {
+            const images = document.querySelectorAll('img.lazy-image[data-src]');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        img.classList.remove('lazy-image');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px' // Start loading when image is 50px away from viewport
+            });
+            
+            images.forEach(img => imageObserver.observe(img));
+        }
+
+        function setupIntersectionObserver() {
+            const sentinel = document.createElement('div');
+            sentinel.id = 'sentinel';
+            sentinel.style.height = '20px';
+            document.querySelector('.container').appendChild(sentinel);
+            
+            const sentinelObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && currentIndex < allClothes.length) {
+                    loadNextChunk();
+                }
+            }, {
+                rootMargin: '200px' // Load more items when sentinel is 200px away
+            });
+            
+            sentinelObserver.observe(sentinel);
+        }
+        document.getElementById("kill").addEventListener("click", async () => {
+            await fetch("api/clothes/kill");
+            window.location.reload()
+        })
+
+        // Load clothes when page loads
+        loadClothes();
+    </script>
+</body>
+</html>

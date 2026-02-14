@@ -1,0 +1,931 @@
+{
+    "brands": [
+        "Givenchy",
+        "Hood By Air",
+        "Yves Saint Laurent",
+        "Balenciaga",
+        "Rick Owen",
+        "Maison Margiela",
+        "Dolce & Gabbana",
+        "Balmain",
+        "291295 homme",
+        "Blackmeans",
+        "Dsquared2",
+        "Carol Christian Poell",
+        "C.P. Company",
+        "Ato",
+        "Matsumoto",
+        "Buffalo Bobs",
+        "Roberto Cavalli",
+        "Amiri",
+        "Dirk Bikkembergs",
+        "in the attic",
+        "semantic design",
+        "Jun Takahashi",
+        "Telfar",
+        "Commes Des Garcons Homme",
+        "Cinzia Araia",
+        "Acne Studios",
+        "Jean Paul Gaultier",
+        "Undercover",
+        "PPFM",
+        "LGB",
+        "KMrii",
+        "Share Spirit",
+        "5351 Pour Les Hommes",
+        "Les hommes",
+        "Kapital",
+        "Alexander Mcqueen",
+        "Murder License",
+        "Jeremy scott",
+        "Vivienne westwood",
+        "Diesel Black and gold",
+        "Giusepper Zanotti",
+        "Gucci",
+        "Dior",
+        "Burberry",
+        "Fendi",
+        "Raf Simons",
+        "Hysteric Glamour",
+        "Civarize",
+        "Neighborhood",
+        "Moose Knuckles",
+        "Number Nine",
+        "Old Curiosity Shop",
+        "Shellac",
+        "MCM",
+        "Diet Butcher",
+        "Enfants Riches Déprimés",
+        "Gosha Rubchinskiy"
+    ],
+
+    "GLOBAL_EXCLUDE": ["watch", "V-Neck", "V Neck", "sunglass", "loafer", "Blaze", 
+    "Dress","tie", "suit", "blazer", "swim", "glasses", "cuff", "tailored",
+    "chief", "hat", "sticker", "sock"],
+
+    "Givenchy": {
+        "link": "https://gem.app/search?terms=givenchy&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 180,
+            "jacket": 180
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Hood By Air": {
+        "link": "https://gem.app/search?terms=Hood%20By%20Air&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 180,
+            "jacket": 180
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Yves Saint Laurent": {
+        "link": "https://gem.app/search?terms=Saint%20Laurent&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 180
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Balenciaga": {
+        "link": "https://gem.app/search?terms=Balenciaga&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 150,
+            "jeans": 180,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Rick Owen": {
+        "link": "https://gem.app/search?terms=Rick%20Owen&gender=m&sort=newestFirst",
+        "price": {
+            "default": 200,
+            "hoodie": 250,
+            "pants": 220,
+            "shoe": 350,
+            "jeans": 280,
+            "coat": 300,
+            "jacket": 300
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Maison Margiela": {
+        "link": "https://gem.app/search?terms=Maison%20Margiela&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 180,
+            "jeans": 180,
+            "coat": 180,
+            "jacket": 180
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Dolce & Gabbana": {
+        "link": "https://gem.app/search?terms=Dolce%20%26%20Gabbana&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 120,
+            "pants": 150,
+            "shoe": 180,
+            "jeans": 150,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Balmain": {
+        "link": "https://gem.app/search?terms=Balmain&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "291295 homme": {
+        "link": "https://gem.app/search?terms=291295%20homme&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 120,
+            "pants": 150,
+            "shoe": 180,
+            "jeans": 150,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Blackmeans": {
+        "link": "https://gem.app/search?terms=Blackmeans&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 150,
+            "pants": 150,
+            "shoe": 150,
+            "jeans": 150,
+            "coat": 120,
+            "jacket": 120
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Dsquared2": {
+        "link": "https://gem.app/search?terms=Dsquared2&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 140,
+            "pants": 120,
+            "shoe": 150,
+            "jeans": 120,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Carol Christian Poell": {
+        "link": "https://gem.app/search?terms=Carol%20Christian%20Poell&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 120,
+            "pants": 150,
+            "shoe": 150,
+            "jeans": 120,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "C.P. Company": {
+        "link": "https://gem.app/search?terms=C.P.%20Company&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 80,
+            "pants": 120,
+            "shoe": 150,
+            "jeans": 120,
+            "coat": 120,
+            "jacket": 120
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Ato": {
+        "link": "https://gem.app/search?terms=Ato&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 80,
+            "pants": 120,
+            "shoe": 150,
+            "jeans": 140,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Matsumoto": {
+        "link": "https://gem.app/search?terms=Matsumoto&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 120,
+            "pants": 150,
+            "shoe": 180,
+            "jeans": 150,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Buffalo Bobs": {
+        "link": "https://gem.app/search?terms=Buffalo%20Bobs&gender=m&sort=newestFirst",
+        "price": {
+            "default": 80,
+            "hoodie": 100,
+            "pants": 120,
+            "shoe": 140,
+            "jeans": 120,
+            "coat": 140,
+            "jacket": 140
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Roberto Cavalli": {
+        "link": "https://gem.app/search?terms=Roberto%20Cavalli&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Amiri": {
+        "link": "https://gem.app/search?terms=Amiri&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 150,
+            "pants": 150,
+            "shoe": 180,
+            "jeans": 150,
+            "coat": 250,
+            "jacket": 250
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Dirk Bikkembergs": {
+        "link": "https://gem.app/search?terms=Dirk%20Bikkembergs&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 120,
+            "pants": 140,
+            "shoe": 170,
+            "jeans": 140,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "in the attic": {
+        "link": "https://gem.app/search?terms=in%20the%20attic&gender=m&sort=newestFirst",
+        "price": {
+            "default": 80,
+            "hoodie": 100,
+            "pants": 120,
+            "shoe": 140,
+            "jeans": 120,
+            "coat": 140,
+            "jacket": 140
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "semantic design": {
+        "link": "https://gem.app/search?terms=semantic%20design&gender=m&sort=newestFirst",
+        "price": {
+            "default": 80,
+            "hoodie": 100,
+            "pants": 120,
+            "shoe": 140,
+            "jeans": 120,
+            "coat": 140,
+            "jacket": 140
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Jun Takahashi": {
+        "link": "https://gem.app/search?terms=Jun%20Takahashi&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Telfar": {
+        "link": "https://gem.app/search?terms=Telfar&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 120,
+            "pants": 140,
+            "shoe": 150,
+            "jeans": 140,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Commes Des Garcons Homme": {
+        "link": "https://gem.app/search?terms=Commes%20Des%20Garcons%20Homme&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 220,
+            "jacket": 220
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Cinzia Araia": {
+        "link": "https://gem.app/search?terms=Cinzia%20Araia&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 220,
+            "jacket": 220
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Acne Studios": {
+        "link": "https://gem.app/search?terms=Acne%20Studios&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 100,
+            "pants": 100,
+            "shoe": 180,
+            "jeans": 100,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Jean Paul Gaultier": {
+        "link": "https://gem.app/search?terms=Jean%20Paul%20Gaultier&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 220,
+            "jacket": 220
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Undercover": {
+        "link": "https://gem.app/search?terms=Undercover&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 220,
+            "jacket": 220
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "PPFM": {
+        "link": "https://gem.app/search?terms=PPFM&gender=m&sort=newestFirst",
+        "price": {
+            "default": 80,
+            "hoodie": 80,
+            "pants": 80,
+            "shoe": 80,
+            "jeans": 80,
+            "coat": 80,
+            "jacket": 80
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "LGB": {
+        "price": {
+            "default": 100,
+            "hoodie": 120,
+            "pants": 140,
+            "shoe": 150,
+            "jeans": 140,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "KMrii": {
+        "link": "https://gem.app/search?terms=KMrii&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 220,
+            "jeans": 180,
+            "coat": 220,
+            "jacket": 220
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Share Spirit": {
+        "link": "https://gem.app/search?terms=Share%20Spirit&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 120,
+            "pants": 140,
+            "shoe": 150,
+            "jeans": 140,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "5351 Pour Les Hommes": {
+        "link": "https://gem.app/search?terms=5351%20Pour%20Les%20Hommes&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 120,
+            "pants": 140,
+            "shoe": 150,
+            "jeans": 140,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Les hommes": {
+        "link": "https://gem.app/search?terms=Les%20hommes&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 140,
+            "pants": 170,
+            "shoe": 180,
+            "jeans": 170,
+            "coat": 180,
+            "jacket": 180
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Kapital": {
+        "link": "https://gem.app/search?terms=Kapital&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 140,
+            "pants": 170,
+            "shoe": 180,
+            "jeans": 170,
+            "coat": 180,
+            "jacket": 180
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Alexander Mcqueen": {
+        "link": "https://gem.app/search?terms=Alexander%20mcqueen&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 180,
+            "pants": 150,
+            "shoe": 200,
+            "jeans": 150,
+            "coat": 200,
+            "jacket": 200
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Murder License": {
+        "link": "https://gem.app/search?terms=Murder%20License&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 120,
+            "pants": 140,
+            "shoe": 150,
+            "jeans": 140,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Jeremy scott": {
+        "link": "https://gem.app/search?terms=Jeremy%20scott&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 140,
+            "pants": 170,
+            "shoe": 180,
+            "jeans": 170,
+            "coat": 180,
+            "jacket": 180
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Vivienne westwood": {
+        "link": "https://gem.app/search?terms=Vivienne%20westwood&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 140,
+            "pants": 170,
+            "shoe": 180,
+            "jeans": 170,
+            "coat": 180,
+            "jacket": 180
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Diesel Black and gold": {
+        "link": "https://gem.app/search?terms=Diesel%20Black%20and%20gold&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 120,
+            "pants": 140,
+            "shoe": 170,
+            "jeans": 140,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Giusepper Zanotti": {
+        "link": "https://gem.app/search?terms=Giusepper%20Zanotti&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 150,
+            "pants": 180,
+            "shoe": 250,
+            "jeans": 180,
+            "coat": 220,
+            "jacket": 220
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Gucci": {
+        "link": "https://gem.app/search?terms=Gucci&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 120,
+            "pants": 220,
+            "shoe": 220,
+            "jeans": 150,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Dior": {
+        "link": "https://gem.app/search?terms=Dior&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 180,
+            "pants": 220,
+            "shoe": 250,
+            "jeans": 220,
+            "coat": 250,
+            "jacket": 250
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Dior Homme": {
+        "link": "https://gem.app/search?terms=Dior%20Homme&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 180,
+            "pants": 220,
+            "shoe": 250,
+            "jeans": 220,
+            "coat": 250,
+            "jacket": 250
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Burberry": {
+        "link": "https://gem.app/search?terms=Burberry&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 170,
+            "pants": 210,
+            "shoe": 240,
+            "jeans": 210,
+            "coat": 200,
+            "jacket": 200
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Fendi": {
+        "link": "https://gem.app/search?terms=Fendi&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 180,
+            "pants": 150,
+            "shoe": 150,
+            "jeans": 150,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Louis Vuitton": {
+        "link": "https://gem.app/search?terms=Louis%20Vuitton&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 150,
+            "pants": 150,
+            "shoe": 200,
+            "jeans": 150,
+            "coat": 200,
+            "jacket": 200
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Prada": {
+        "link": "https://gem.app/search?terms=Prada&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 100,
+            "pants": 100,
+            "shoe": 150,
+            "jeans": 100,
+            "coat": 150,
+            "jacket": 150
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Raf Simons": {
+        "link": "https://gem.app/search?terms=Raf%20Simons&gender=m&sort=newestFirst",
+        "price": {
+            "default": 150,
+            "hoodie": 180,
+            "pants": 220,
+            "shoe": 250,
+            "jeans": 220,
+            "coat": 250,
+            "jacket": 250
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Midas": {
+        "link": "https://gem.app/search?terms=Midas&gender=m&sort=newestFirst",
+        "price": {
+            "default": 90,
+            "hoodie": 100,
+            "pants": 100,
+            "shoe": 100,
+            "jeans": 100,
+            "coat": 100,
+            "jacket": 100
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Hysteric Glamour": {
+        "link": "https://gem.app/search?terms=Hysteric%20Glamour&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 150,
+            "pants": 200,
+            "shoe": 250,
+            "jeans": 200,
+            "coat": 200,
+            "jacket": 200
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Civarize": {
+        "link": "https://gem.app/search?terms=Civarize&gender=m&sort=newestFirst",
+        "price": {
+            "default": 90,
+            "hoodie": 100,
+            "pants": 100,
+            "shoe": 100,
+            "jeans": 100,
+            "coat": 100,
+            "jacket": 100
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Neighborhood": {
+        "link": "https://gem.app/search?terms=Neighborhood&gender=m&sort=newestFirst",
+        "price": {
+            "default": 90,
+            "hoodie": 100,
+            "pants": 100,
+            "shoe": 100,
+            "jeans": 100,
+            "coat": 100,
+            "jacket": 100
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Moncler": {
+        "link": "https://gem.app/search?terms=Moncler&gender=m&sort=newestFirst",
+        "price": {
+            "default": 200,
+            "hoodie": 200,
+            "pants": 200,
+            "shoe": 300,
+            "jeans": 200,
+            "coat": 250,
+            "jacket": 250
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Moose Knuckles": {
+        "link": "https://gem.app/search?terms=Moose%20Knuckles&gender=m&sort=newestFirst",
+        "price": {
+            "default": 200,
+            "hoodie": 200,
+            "pants": 200,
+            "shoe": 200,
+            "jeans": 200,
+            "coat": 200,
+            "jacket": 200
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Number Nine": {
+        "link": "https://gem.app/search?terms=Number%20Nine&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 150,
+            "pants": 200,
+            "shoe": 200,
+            "jeans": 200,
+            "coat": 200,
+            "jacket": 200
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Old Curiosity Shop": {
+        "link": "https://gem.app/search?terms=Old%20Curiosity%20Shop&gender=m&sort=newestFirst",
+        "price": {
+            "default": 300,
+            "hoodie": 300,
+            "pants": 300,
+            "shoe": 300,
+            "jeans": 300,
+            "coat": 300,
+            "jacket": 300
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Shellac": {
+        "link": "https://gem.app/search?terms=Shellac&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 150,
+            "pants": 200,
+            "shoe": 200,
+            "jeans": 200,
+            "coat": 200,
+            "jacket": 200
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "MCM": {
+        "link": "https://gem.app/search?terms=MCM&gender=m&sort=newestFirst",
+        "price": {
+            "default": 120,
+            "hoodie": 150,
+            "pants": 200,
+            "shoe": 200,
+            "jeans": 200,
+            "coat": 200,
+            "jacket": 200
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Diet Butcher": {
+        "link": "https://gem.app/search?terms=Diet%20Butcher&gender=m&sort=newestFirst",
+        "price": {
+            "default": 100,
+            "hoodie": 150,
+            "pants": 200,
+            "shoe": 200,
+            "jeans": 200,
+            "coat": 200,
+            "jacket": 200
+        },
+        "limit": "new",
+        "exclude": []
+    },
+    "Enfants Riches Déprimés": {
+        "price": {
+            "default": 150,
+            "hoodie": 200,
+            "pants": 250,
+            "shoe": 200,
+            "jeans": 200,
+            "coat": 250,
+            "jacket": 250
+        },
+        "limit": "new",
+        "exclude": []
+    },
+     "Gosha Rubchinskiy": {
+        "price": {
+            "default": 100,
+            "hoodie": 150,
+            "pants": 200,
+            "shoe": 200,
+            "jeans": 200,
+            "coat": 200,
+            "jacket": 200
+        },
+        "limit": "new",
+        "exclude": []
+    }
+
+
+}

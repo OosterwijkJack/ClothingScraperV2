@@ -1,0 +1,20 @@
+POST /graphql HTTP/2
+Host: backend.gem.app
+Cookie: currency=CAD; measurements=%7B%22mtsUnits%22%3A%22orig%22%2C%22mtsConvertFlat%22%3Anull%7D; homeImage=15%2C0; sidePanel={%22isOpen%22:false}; _ga=GA1.1.175327028.1770573429; _ga_49N51MV1DX=GS2.1.s1770573429$o1$g1$t1770573840$j60$l0$h0
+Content-Length: 1166
+Sec-Ch-Ua-Platform: "Linux"
+Accept-Language: en-US,en;q=0.9
+Sec-Ch-Ua: "Not(A:Brand";v="8", "Chromium";v="144"
+Content-Type: application/json
+Sec-Ch-Ua-Mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36
+Accept: */*
+Origin: https://gem.app
+Sec-Fetch-Site: same-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://gem.app/
+Accept-Encoding: gzip, deflate, br
+Priority: u=1, i
+
+{"query":"query search2($query: SearchQueryInput!, $nextPageId: String, $count: Int) {\n  search2(query: $query, nextPageId: $nextPageId, count: $count) {\n    results {\n      type\n      product {\n        ...ProductFragment\n      }\n    }\n    nextPageId\n    exactCount\n    partialCount\n    suggestions\n  }\n}\n\nfragment ProductFragment on Product {\n  id\n  productId\n  source\n  url\n  urlAffiliate\n  available\n  removedDate\n  seller\n  title\n  price\n  priceOriginalNumber\n  priceOriginalCurrency\n  gender\n  countryName\n  images {\n    thumbnail {\n      url\n      width\n      height\n    }\n    full {\n      url\n      width\n      height\n    }\n  }\n  outboundLinkText\n  itemTypeV1\n  sizesV1 {\n    type\n    label\n    values {\n      label\n      value\n      value2\n      unit\n      isMore\n      sizeParam\n      convLabel\n      convValue\n    }\n    notes {\n      icon\n      text\n      action\n    }\n  }\n  isAuction\n  saved\n}","operationName":"search2","variables":{"query":{"terms":"Hood By Air"},"nextPageId":"eyJ0eXBlIjoiZXhhY3QiLCJzb3J0S2V5IjpbMS4zMTA4MTY0LCJob29kLWJ5LWFpci1ob29kLWJ5LWFpci1waWYtdGVlIl19","count":50}}
