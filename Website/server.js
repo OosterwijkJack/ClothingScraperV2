@@ -20,7 +20,7 @@ const db = new sqlite3.Database('./clothes.db', (err) => {
 
 // API endpoint to get all clothes, ordered by ID descending (newest first)
 app.get('/api/clothes', (req, res) => {
-    db.all('SELECT * FROM clothes ORDER BY "Index" DESC', [], (err, rows) => {
+    db.all('SELECT * FROM clothes WHERE seen != 1 ORDER BY "Index" DESC', [], (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -29,7 +29,7 @@ app.get('/api/clothes', (req, res) => {
   });
 });
 app.get("/api/clothes/kill", (req, res) => {
-  db.all('DELETE FROM clothes', [], (err, rows) => {
+  db.all('UPDATE clothes SET seen = 1', [], (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;

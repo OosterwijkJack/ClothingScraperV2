@@ -17,6 +17,7 @@ total_scans = 0
 COUNT = 100
 
 GLOBAL_EXCLUDE = []
+errors_history = []
 
 def main():
     global total_count, GLOBAL_EXCLUDE
@@ -51,23 +52,24 @@ def main():
         process_request(dataJson, brand_rules) # process the initial request
 
         while total_count < realCount: # loop until all items from query are processed 
-            displayProgress(brand, realCount)
             time.sleep(0.25)
             # repeat process but use the nextPageId
             variables  = { # search query
-            "query": {"terms":brand,"addedAfter":f"{date_last_checked}T03:59:59.999Z", "gender": "m"},
+            "query": {"terms":brand,"addedAfter":f"{date_last_checked}", "gender": "m"},
             "count":COUNT,
             "nextPageId": nextPageId,
             } 
             response = requests.post(request_data.url, headers=request_data.headers, cookies=request_data.cookies, 
                                 json= request_data.createPayload(variables))
             dataJson = response.json()
-            
-            nextPageId = dataJson["data"]["search2"]["nextPageId"] # get next page id again
+            try:
+                nextPageId = dataJson["data"]["search2"]["nextPageId"] # get next page id again
+            except Exception:
+                print(dataJson)
+                exit()
             if(not nextPageId):
                 break
             process_request(dataJson, brand_rules)
-    displayProgress("", realCount)
         
 
 
@@ -122,14 +124,16 @@ def insertClothes(data):
     global total_finds
     try:
         sql = """
-    INSERT INTO clothes (link, img_link, description, price)
-    VALUES (:link, :image_link, :description, :price)
+    INSERT INTO clothes (link, img_link, description, price, seen)
+    VALUES (:link, :image_link, :description, :price, 0)
         """
         cursor.execute(sql, data)
         conn.commit()
         total_finds += 1
+        print(f"Found: {data["description"]} total finds: {total_finds}")
     except Exception as e:
-        print(e)
+        if "UNIQUE" not in str(e):
+            print(e)
 
 def filterRules(rules, desc, price):
     global GLOBAL_EXCLUDE
@@ -138,9 +142,12 @@ def filterRules(rules, desc, price):
 
     # filter out items with excluded keyword
 
-    for i in GLOBAL_EXCLUDE:
+    for i in GLOBAL_EXCLUDE: 
         if i in desc.lower():
             return False 
+    for i in rules["exclude"]: # rules that only pertain to this brand
+        if i in desc.lower():
+            return False
     
 
     # price filter

@@ -56,7 +56,21 @@
         "MCM",
         "Diet Butcher",
         "Enfants Riches Déprimés",
-        "Gosha Rubchinskiy"
+        "Gosha Rubchinskiy",
+        "Boris Bidjan Saberi",
+        "Julius",
+        "Mastermind japan",
+        "Yohji Yamamoto",
+        "Final Homme",
+        "Devoa",
+        "Guidi",
+        "Helmut Lang",
+        "Maison Mihara Yasuhiro",
+        "Damir Doma",
+        "Haider Ackermann",
+        "Craig Green",
+        "Ann Demeulemeester"
+
     ],
 
     "GLOBAL_EXCLUDE": ["watch", "V-Neck", "V Neck", "sunglass", "loafer", "Blaze", 
@@ -913,7 +927,7 @@
         "limit": "new",
         "exclude": []
     },
-     "Gosha Rubchinskiy": {
+    "Gosha Rubchinskiy": {
         "price": {
             "default": 100,
             "hoodie": 150,
@@ -925,7 +939,185 @@
         },
         "limit": "new",
         "exclude": []
-    }
+    },
+    "Boris Bidjan Saberi": {
+    "link": "https://gem.app/search?terms=Boris%20Bidjan%20Saberi&gender=m&sort=newestFirst",
+    "price": {
+        "default": 220,
+        "hoodie": 260,
+        "pants": 240,
+        "shoe": 320,
+        "jeans": 240,
+        "coat": 320,
+        "jacket": 320
+    },
+    "limit": "new",
+    "exclude": []
+},
 
+"Julius": {
+    "link": "https://gem.app/search?terms=Julius&gender=m&sort=newestFirst",
+    "price": {
+        "default": 180,
+        "hoodie": 220,
+        "pants": 200,
+        "shoe": 260,
+        "jeans": 200,
+        "coat": 260,
+        "jacket": 260
+    },
+    "limit": "new",
+    "exclude": []
+},
+
+"Mastermind japan": {
+    "link": "https://gem.app/search?terms=Mastermind%20Japan&gender=m&sort=newestFirst",
+    "price": {
+        "default": 150,
+        "hoodie": 150,
+        "pants": 150,
+        "shoe": 150,
+        "jeans": 150,
+        "coat": 150,
+        "jacket": 150
+    },
+    "limit": "new",
+    "exclude": []
+},
+
+"Yohji Yamamoto": {
+    "link": "https://gem.app/search?terms=Yohji%20Yamamoto&gender=m&sort=newestFirst",
+    "price": {
+        "default": 170,
+        "hoodie": 200,
+        "pants": 220,
+        "shoe": 260,
+        "jeans": 220,
+        "coat": 280,
+        "jacket": 280
+    },
+    "limit": "new",
+    "exclude": []
+},
+
+"Final Homme": {
+    "link": "https://gem.app/search?terms=Final%20Homme&gender=m&sort=newestFirst",
+    "price": {
+        "default": 120,
+        "hoodie": 140,
+        "pants": 160,
+        "shoe": 180,
+        "jeans": 160,
+        "coat": 180,
+        "jacket": 180
+    },
+    "limit": "new",
+    "exclude": []
+},
+
+"Devoa": {
+    "link": "https://gem.app/search?terms=Devoa&gender=m&sort=newestFirst",
+    "price": {
+        "default": 200,
+        "hoodie": 230,
+        "pants": 220,
+        "shoe": 300,
+        "jeans": 220,
+        "coat": 300,
+        "jacket": 300
+    },
+    "limit": "new",
+    "exclude": []
+},
+
+"Guidi": {
+    "link": "https://gem.app/search?terms=Guidi&gender=m&sort=newestFirst",
+    "price": {
+        "default": 180,
+        "hoodie": 180,
+        "pants": 200,
+        "shoe": 250,
+        "jeans": 200,
+        "coat": 260,
+        "jacket": 260
+    },
+    "limit": "new",
+    "exclude": []
+},
+
+"Helmut Lang": {
+    "link": "https://gem.app/search?terms=Helmut%20Lang&gender=m&sort=newestFirst",
+    "price": {
+        "default": 160,
+        "hoodie": 180,
+        "pants": 200,
+        "shoe": 240,
+        "jeans": 200,
+        "coat": 240,
+        "jacket": 240
+    },
+    "limit": "new",
+    "exclude": []
+},
+
+"Maison Mihara Yasuhiro": {
+    "link": "https://gem.app/search?terms=Mihara%20Yasuhiro&gender=m&sort=newestFirst",
+    "price": {
+        "default": 140,
+        "hoodie": 160,
+        "pants": 180,
+        "shoe": 240,
+        "jeans": 180,
+        "coat": 200,
+        "jacket": 200
+    },
+    "limit": "new",
+    "exclude": []
+},
+
+"Damir Doma": {
+    "link": "https://gem.app/search?terms=Damir%20Doma&gender=m&sort=newestFirst",
+    "price": {
+        "default": 170,
+        "hoodie": 200,
+        "pants": 220,
+        "shoe": 260,
+        "jeans": 220,
+        "coat": 260,
+        "jacket": 260
+    },
+    "limit": "new",
+    "exclude": []
+},
+
+"Haider Ackermann": {
+    "link": "https://gem.app/search?terms=Haider%20Ackermann&gender=m&sort=newestFirst",
+    "price": {
+        "default": 190,
+        "hoodie": 220,
+        "pants": 240,
+        "shoe": 280,
+        "jeans": 240,
+        "coat": 300,
+        "jacket": 300
+    },
+    "limit": "new",
+    "exclude": []
+},
+
+"Craig Green": {
+    "link": "https://gem.app/search?terms=Craig%20Green&gender=m&sort=newestFirst",
+    "price": {
+        "default": 180,
+        "hoodie": 200,
+        "pants": 220,
+        "shoe": 260,
+        "jeans": 220,
+        "coat": 280,
+        "jacket": 280
+    },
+    "limit": "new",
+    "exclude": ["jordan"]
+}
 
 }
