@@ -3,18 +3,14 @@ from datetime import datetime
 
 # Brand names from the JSON
 brands = [
-    "Boris Bidjan Saberi",
-    "Julius",
-    "Mastermind japan",
-    "Yohji Yamamoto",
-    "Final Homme",
-    "Devoa",
-    "Guidi",
-    "Helmut Lang",
-    "Maison Mihara Yasuhiro",
-    "Damir Doma",
-    "Haider Ackermann",
-    "Craig Green"
+        "The Viridi-anne",
+        "Kazuyuki Kumagai",
+        "Lad Musician",
+        "Kiryuyrik",
+        "Ziggy Chen",
+        "Taichi Murakami",
+        "Alessandro",
+        "GmbH"
 ]
 
 # Connect to SQLite database (creates it if it doesn't exist)

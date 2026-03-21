@@ -20,7 +20,7 @@ const db = new sqlite3.Database('./clothes.db', (err) => {
 
 // API endpoint to get all clothes, ordered by ID descending (newest first)
 app.get('/api/clothes', (req, res) => {
-    db.all('SELECT * FROM clothes WHERE seen != 1 ORDER BY "Index" DESC', [], (err, rows) => {
+    db.all('SELECT * FROM clothes WHERE seen != 1 ORDER BY "cIndex" DESC', [], (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;

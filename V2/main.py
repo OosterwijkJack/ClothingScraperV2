@@ -58,6 +58,7 @@ def main():
             "query": {"terms":brand,"addedAfter":f"{date_last_checked}", "gender": "m"},
             "count":COUNT,
             "nextPageId": nextPageId,
+            
             } 
             response = requests.post(request_data.url, headers=request_data.headers, cookies=request_data.cookies, 
                                 json= request_data.createPayload(variables))
@@ -130,7 +131,7 @@ def insertClothes(data):
         cursor.execute(sql, data)
         conn.commit()
         total_finds += 1
-        print(f"Found: {data["description"]} total finds: {total_finds}")
+        print(f"Found: {data["description"]} | total finds: {total_finds}")
     except Exception as e:
         if "UNIQUE" not in str(e):
             print(e)
