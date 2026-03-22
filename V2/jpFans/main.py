@@ -15,6 +15,8 @@ url = "https://jpfans.com/search-info/search?lang=en&language=en&wmc-currency=CA
 total_finds = 0
 
 GLOBAL_EXCLUDE = []
+
+DUP_MAX = 3
 def main():
     global GLOBAL_EXCLUDE
     f = open("../../rules.json")
@@ -23,6 +25,7 @@ def main():
 
     GLOBAL_EXCLUDE = rules["GLOBAL_EXCLUDE"] 
     tmpp = False
+    
     for i in rules["brands"]:
 
         if(len(rules[i]["id"]) <= 0): # if the brand has an id
@@ -35,7 +38,7 @@ def main():
         discoveredDuplicate = False
 
         while True:
-            if dup >= 2:
+            if dup >= DUP_MAX:
                 break
 
             response = requests.post(url, json=jp_data.get_payload(page, rules[i]["id"]), headers=jp_data.headers)

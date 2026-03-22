@@ -49,7 +49,7 @@ def main():
 
         nextPageId = dataJson["data"]["search2"]["nextPageId"]
 
-        process_request(dataJson, brand_rules) # process the initial request
+        process_request(dataJson, brand_rules, brand) # process the initial request
 
         while total_count < realCount: # loop until all items from query are processed 
             time.sleep(0.25)
@@ -70,7 +70,7 @@ def main():
                 exit()
             if(not nextPageId):
                 break
-            process_request(dataJson, brand_rules)
+            process_request(dataJson, brand_rules, brand)
         
 
 
@@ -82,7 +82,7 @@ def displayProgress(brand, count):
     print(f"{brand}: {total_count}/{count} ({percent:.2f}%)" if brand else "")   
     print(f"Total finds: {total_finds}/{total_scans}")
 
-def process_request(jsonData, rules):
+def process_request(jsonData, rules, brand):
     global total_count, total_scans
     results = jsonData["data"]["search2"]["results"]
 
@@ -102,6 +102,7 @@ def process_request(jsonData, rules):
             "id": product.get("id", ""),
             "sizeParam": safe_get(product, "sizesV1", 0, "values", 0, "sizeParam"),
             "isAuction": product.get("isAuction", ""),
+            "brand": brand
         }
         if(filterRules(rules, product_data["description"], price_float)):
             insertClothes(product_data)
@@ -125,8 +126,8 @@ def insertClothes(data):
     global total_finds
     try:
         sql = """
-    INSERT INTO clothes (link, img_link, description, price, seen)
-    VALUES (:link, :image_link, :description, :price, 0)
+    INSERT INTO clothes (link, img_link, description, price, seen, brand)
+    VALUES (:link, :image_link, :description, :price, 0, :brand)
         """
         cursor.execute(sql, data)
         conn.commit()

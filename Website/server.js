@@ -3,9 +3,11 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
+
 const app = express();
 const PORT = 3000;
 
+app.use(express.json());
 // Serve static files
 app.use(express.static('public'));
 
@@ -37,6 +39,56 @@ app.get("/api/clothes/kill", (req, res) => {
     res.json(rows);
   });
 })
+
+app.post('/api/clothes/index', (req, res) => {
+  if (!req.body || !req.body.brand) {
+    return res.status(400).json({ error: "Missing brand" });
+  }
+
+  const brand = `${req.body.brand.toLowerCase()}`;
+
+  // Step 1: get 
+  db.get(
+    `SELECT cIndex FROM clothes
+     WHERE seen != 1
+     ORDER BY cIndex DESC
+     LIMIT 1`,
+    (err, row) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      if (!row) {
+        return res.status(404).json({ error: "No match found" });
+      }
+
+      const targetIndex = row.cIndex;
+
+      // Step 2: count how many seen=1 items are above it
+      db.get(
+        `SELECT cIndex FROM clothes
+         WHERE seen != 1 AND
+         LOWER(brand) == ?
+         ORDER BY cIndex DESC
+         LIMIT 1`,
+        [brand],
+        (err2, result) => {
+          if (err2) {
+            return res.status(500).json({ error: err2.message });
+          }
+          let index = 0
+          if(result){
+            index = targetIndex - result.cIndex
+          }
+          
+          res.json({
+            index: index
+          });
+        }
+      );
+    }
+  );
+});
 
 // Serve the main page
 app.get('/', (req, res) => {
