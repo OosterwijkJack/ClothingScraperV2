@@ -58,7 +58,7 @@ def main():
                 image_link = j["image"]
                 id = j["id"]
                 link = f"https://jpfans.com/product?id={id}&platform=mercari"
-                instertDict = {"link": link, "image_link": image_link, "description": desc, "price": price}
+                instertDict = {"link": link, "image_link": image_link, "description": desc, "price": price, "brand": i}
 
                 if(filterRules(rules[i], desc, price)):
                     if insertClothes(instertDict): # returns true when duplicate
