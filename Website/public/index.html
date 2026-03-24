@@ -1,142 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clothes Gallery</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clothes Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
+:root {
+  --cream: #F5F0E8;
+  --cream-dark: #EDE6D6;
+  --ink: #1C1A17;
+  --ink-muted: #6B6560;
+  --ink-faint: #B8B2A9;
+  --accent: #C4A882;
+  --accent-dark: #9E7E5C;
+  --white: #FDFBF8;
+  --border: rgba(28,26,23,0.12);
+  --border-hover: rgba(28,26,23,0.28);
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--cream);
+  min-height: 100vh;
+  color: var(--ink);
+}
 
-        h1 {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
+/* ── Top bar ── */
+.topbar {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
+.topbar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  margin-right: auto;
+  font-style: italic;
+}
 
-        .card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
+/* ── Toolbar buttons ── */
+.tb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 16px;
+  height: 34px;
+  border-radius: 2px;
+  border: 1px solid rgba(245,240,232,0.25);
+  background: transparent;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s;
+  white-space: nowrap;
+}
+.tb-btn:hover {
+  background: rgba(245,240,232,0.1);
+  border-color: rgba(245,240,232,0.5);
+}
+.tb-btn:active { opacity: 0.7; }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
+/* ── Brand select + Choices.js overrides ── */
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-        .card-image {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
+.choices {
+  width: 200px !important;
+  margin: 0 !important;
+}
+.choices__inner {
+  background: transparent !important;
+  border: 1px solid rgba(245,240,232,0.25) !important;
+  border-radius: 2px !important;
+  min-height: 34px !important;
+  padding: 4px 10px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 12px !important;
+  letter-spacing: 0.04em !important;
+  color: var(--cream) !important;
+  display: flex;
+  align-items: center;
+}
+.choices__inner:hover {
+  border-color: rgba(245,240,232,0.5) !important;
+}
+.choices[data-type*="select-one"] .choices__inner::after { display: none; }
+.choices__list--single .choices__item { color: var(--cream) !important; }
+.choices__list--dropdown {
+  background: var(--ink) !important;
+  border: 1px solid rgba(245,240,232,0.2) !important;
+  border-radius: 2px !important;
+  margin-top: 4px !important;
+}
+.choices__list--dropdown .choices__item {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 12px !important;
+  color: var(--cream) !important;
+  padding: 9px 14px !important;
+}
+.choices__list--dropdown .choices__item--highlighted {
+  background: rgba(245,240,232,0.1) !important;
+  color: var(--cream) !important;
+}
+.choices__placeholder { color: var(--ink-faint) !important; opacity: 1 !important; }
+.choices[data-type*="select-one"]::after {
+  border-color: rgba(245,240,232,0.5) transparent transparent !important;
+  right: 12px !important;
+}
+.choices[data-type*="select-one"].is-open::after {
+  border-color: transparent transparent rgba(245,240,232,0.5) !important;
+}
+.choices__heading {
+  color: var(--ink-faint) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+#brand-select { display: none; }
 
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: fill;
-            transition: transform 0.3s ease;
-        }
+/* ── Page layout ── */
+.page {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 56px 40px 80px;
+}
 
-        .card-image:hover img {
-            transform: scale(1.05);
-        }
+.page-header {
+  margin-bottom: 52px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+}
 
-        .card-content {
-            padding: 15px;
-            background: white;
-            flex-grow: 1;
-        }
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
 
-        .label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
-        }
+.page-title em {
+  font-style: italic;
+  color: var(--accent-dark);
+}
 
-        .price {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 15px;
-        }
+.page-meta {
+  font-size: 12px;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.6;
+}
 
-        .description {
-            color: #555;
-            line-height: 1.5;
-            font-size: 0.9rem;
-        }
+/* ── Gallery grid ── */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2px;
+}
 
-        .loading {
-            text-align: center;
-            color: white;
-            font-size: 1.2rem;
-            padding: 40px;
-        }
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.22s ease;
+  border: 1px solid var(--border);
+}
 
-        .error {
-            text-align: center;
-            color: #ff6b6b;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px auto;
-            max-width: 500px;
-        }
-    </style>
+.card:hover {
+  box-shadow: 0 12px 40px rgba(28,26,23,0.13);
+  z-index: 2;
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  background: var(--cream-dark);
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.card-image:hover img {
+  transform: scale(1.06);
+}
+
+.card-content {
+  padding: 16px 18px 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.description {
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  font-weight: 300;
+  margin-top: 2px;
+}
+
+/* ── Loading & error states ── */
+.loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.loading-dot {
+  display: inline-flex;
+  gap: 6px;
+}
+.loading-dot span {
+  width: 5px; height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+.loading-dot span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dot span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pulse {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1); }
+}
+
+.error {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--ink-muted);
+  background: var(--white);
+  padding: 32px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+}
+
+/* ── Divider accent ── */
+.topbar-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(245,240,232,0.2);
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 </head>
 <body>
-    <button id="kill">Set All Seen</button>
-    <div></div>
-    <div></div>
 
+<!-- Top bar replaces loose buttons -->
+<nav class="topbar">
+  <span class="topbar-title">The Gallery</span>
+
+  <button id="sort" class="tb-btn">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 3h8M3 6h6M4 9h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+    Sort: Price ↑
+  </button>
+
+  <div class="topbar-divider"></div>
+
+  <div class="brand-wrapper">
     <select id="brand-select">
-        <option>Select brand to start</option>
+      <option>Select brand to only view</option>
     </select>
-    <button id="brand-index">Enter</button>
-    
-    <div class="container">
-        <h1>Clothes Gallery</h1>
-        
-        <div id="gallery" class="gallery">
-            <div class="loading">Loading clothes...</div>
-        </div>
+    <button id="brand-index" class="tb-btn">Filter</button>
+  </div>
+
+  <div class="topbar-divider"></div>
+
+  <button id="kill" class="tb-btn">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 6h8M8 3.5L10.5 6 8 8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Mark All Seen
+  </button>
+</nav>
+
+<div class="page">
+  <header class="page-header">
+    <h1 class="page-title">Clothes<br><em>Gallery</em></h1>
+    <div class="page-meta">
+      Curated Collection<br>
     </div>
-   
-    <script src="page.js">
-    </script>
+  </header>
+
+  <div id="gallery" class="gallery">
+    <div class="loading">
+      <div class="loading-dot">
+        <span></span><span></span><span></span>
+      </div>
+      Loading collection…
+    </div>
+  </div>
+</div>
+
+<script src="page.js"></script>
 </body>
 </html>

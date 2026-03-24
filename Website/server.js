@@ -21,8 +21,8 @@ const db = new sqlite3.Database('./clothes.db', (err) => {
 });
 
 // API endpoint to get all clothes, ordered by ID descending (newest first)
-app.get('/api/clothes', (req, res) => {
-    db.all('SELECT * FROM clothes WHERE seen != 1 ORDER BY "cIndex" DESC', [], (err, rows) => {
+app.get('/api/clothes/get/index', (req, res) => {
+    db.all('SELECT * FROM clothes WHERE seen != 1 ORDER BY "cIndex" ASC', [], (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -30,6 +30,45 @@ app.get('/api/clothes', (req, res) => {
     res.json(rows);
   });
 });
+
+app.post('/api/clothes/get', (req, res) => {
+
+  const brandReq = req.body.brand.toLowerCase()
+
+  if(brandReq){
+    db.all(`SELECT * FROM clothes WHERE seen != 1 AND LOWER(brand) = ? ORDER BY "cIndex" ASC`, [brandReq], (err, rows) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      res.json(rows);
+    
+    });
+  }
+  else{
+    db.all(`SELECT * FROM clothes WHERE seen != 1 ORDER BY "cIndex" ASC`, [], (err, rows) => {
+          if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+          }
+          res.json(rows);
+        
+        });
+    }
+  
+});
+
+// API endpoint to get all clothes, ordered by ID descending (newest first)
+app.get('/api/clothes/get/price', (req, res) => {
+    db.all('SELECT * FROM clothes WHERE seen != 1 ORDER BY "price" ASC', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json(rows);
+  });
+});
+
 app.get("/api/clothes/kill", (req, res) => {
   db.all('UPDATE clothes SET seen = 1', [], (err, rows) => {
     if (err) {
@@ -51,7 +90,7 @@ app.post('/api/clothes/index', (req, res) => {
   db.get(
     `SELECT cIndex FROM clothes
      WHERE seen != 1
-     ORDER BY cIndex DESC
+     ORDER BY cIndex ASC
      LIMIT 1`,
     (err, row) => {
       if (err) {
@@ -69,7 +108,7 @@ app.post('/api/clothes/index', (req, res) => {
         `SELECT cIndex FROM clothes
          WHERE seen != 1 AND
          LOWER(brand) == ?
-         ORDER BY cIndex DESC
+         ORDER BY cIndex ASC
          LIMIT 1`,
         [brand],
         (err2, result) => {

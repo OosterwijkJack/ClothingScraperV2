@@ -89,17 +89,28 @@
         let allClothes = [];
         let currentIndex = 0;
         let isLoading = false;
+        let currentSort = "index"
+        let currentBrand = ""
 
         async function loadClothes() {
             const gallery = document.getElementById('gallery');
-            
+        
+
             try {
-                const response = await fetch('/api/clothes');
+                const response = await fetch(`/api/clothes/get`, {
+                    method: "POST",
+                    body: JSON.stringify({"brand": currentBrand}),
+                    headers: {"Content-Type": "application/json"}
+                });
                 if (!response.ok) {
                     throw new Error('Failed to fetch clothes');
                 }
                 
                 allClothes = await response.json();
+                
+                if(currentSort == "price"){
+                    allClothes.sort((a,b) => a.price - b.price)
+                }
                 
                 if (allClothes.length === 0) {
                     gallery.innerHTML = '<div class="loading">No clothes found in database</div>';
@@ -178,7 +189,7 @@
             const sentinel = document.createElement('div');
             sentinel.id = 'sentinel';
             sentinel.style.height = '20px';
-            document.querySelector('.container').appendChild(sentinel);
+            document.querySelector('.page').appendChild(sentinel);
             
             const sentinelObserver = new IntersectionObserver((entries) => {
                 if (entries[0].isIntersecting && currentIndex < allClothes.length) {
@@ -194,6 +205,21 @@
             await fetch("api/clothes/kill");
             window.location.reload()
         })
+        document.getElementById("sort").addEventListener("click", () => {
+            const sortObj = document.getElementById("sort")
+            if (currentSort == "index"){
+                currentSort = "price"
+                sortObj.innerText = "Sort index ascending"
+                currentIndex = 0
+                loadClothes()
+            }
+            else{
+                currentSort = "index"
+                sortObj.innerText = "Sort price ascending"
+                currentIndex = 0
+                loadClothes()
+            }
+        })
         async function initPage(){
             const select = document.getElementById("brand-select")
 
@@ -204,19 +230,24 @@
                 select.appendChild(option)
             });
 
+            const choices = new Choices(select, {
+                searchEnabled: true,
+                itemSelectText: '',
+                shouldSort: false
+            });
+
             const brandEnter = document.getElementById("brand-index")
             brandEnter.addEventListener("click", async () => {
-                fetch("/api/clothes/index", {
-                "method": "POST",
-                "body": JSON.stringify({"brand": select.value}),
-                "headers": {"Content-Type": "application/json"}
-            })
-            .then(res => res.json())
-            .then(data => {
-                currentIndex = data.index
-                console.log(data)
-                loadClothes();
-            })
+            if(!select.value){
+                currentIndex = 0
+                isBrand = false
+                loadClothes()
+            }
+            else{
+                currentBrand = select.value
+                currentIndex = 0
+                loadClothes()
+            }
         })
     }
 
