@@ -138,23 +138,28 @@
             const fragment = document.createDocumentFragment();
             
             chunk.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <a href="${item.link}" target="_blank" class="card-image">
-                        <img data-src="${item.img_link}" alt="${item.description}" class="lazy-image"
-                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23f0f0f0' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23999' font-family='sans-serif' font-size='14'%3ELoading...%3C/text%3E%3C/svg%3E"
-                             onerror="this.src='https://via.placeholder.com/200x200?text=Image+Not+Found'">
-                    </a>
-                    <div class="card-content">
-                        <div class="label">Price</div>
-                        <div class="price">$${parseFloat(item.price).toFixed(2)}</div>
-                        <div class="label">Description</div>
-                        <div class="description">${item.description}</div>
-                    </div>
-                `;
-                fragment.appendChild(card);
-            });
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+        <a href="${item.link}" target="_blank" class="card-image">
+            <img 
+                data-src="${item.img_link}" 
+                alt="${item.description}" 
+                class="lazy-image"
+                loading="lazy"
+                decoding="async"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23f0f0f0' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23999' font-family='sans-serif' font-size='14'%3ELoading...%3C/text%3E%3C/svg%3E"
+            >
+        </a>
+        <div class="card-content">
+            <div class="label">Price</div>
+            <div class="price">$${parseFloat(item.price).toFixed(2)}</div>
+            <div class="label">Description</div>
+            <div class="description">${item.description}</div>
+        </div>
+    `;
+    fragment.appendChild(card);
+});
             
             gallery.appendChild(fragment);
             currentIndex = endIndex;
@@ -164,26 +169,25 @@
             
             isLoading = false;
         }
-
-        function lazyLoadImages() {
-            const images = document.querySelectorAll('img.lazy-image[data-src]');
-            
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
-                        img.classList.remove('lazy-image');
-                        observer.unobserve(img);
-                    }
-                });
-            }, {
-                rootMargin: '50px' // Start loading when image is 50px away from viewport
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    img.classList.remove('lazy-image');
+                    observer.unobserve(img);
+                }
             });
-            
-            images.forEach(img => imageObserver.observe(img));
-        }
+        }, {
+            rootMargin: '300px' // Increased from 50px — loads images well before they're visible
+        });
+        function lazyLoadImages() {
+    // Just register new images with the shared observer
+    document.querySelectorAll('img.lazy-image[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
 
         function setupIntersectionObserver() {
             const sentinel = document.createElement('div');

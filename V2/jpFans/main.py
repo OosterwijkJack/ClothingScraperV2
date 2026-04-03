@@ -72,8 +72,8 @@ def insertClothes(data) -> bool:
     global total_finds
     try:
         sql = """
-    INSERT INTO clothes (link, img_link, description, price, seen)
-    VALUES (:link, :image_link, :description, :price, 0)
+    INSERT INTO clothes (link, img_link, description, price, seen, brand)
+    VALUES (:link, :image_link, :description, :price, 0, :brand)
         """
         cursor.execute(sql, data)
         conn.commit()

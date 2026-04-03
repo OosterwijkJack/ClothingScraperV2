@@ -80,7 +80,8 @@
         "Alessandro",
         "GmbH",
         "Junya Watanabe",
-        "General Research"
+        "General Research",
+        "beaty:beast"
 
 
     ],
@@ -1297,13 +1298,28 @@
      "General Research": {
         "id": ["1599"],
         "price": {
-            "default": 150,
-            "hoodie": 150,
-            "pants": 180,
-            "shoe": 220,
-            "jeans": 180,
-            "coat": 220,
-            "jacket": 220
+            "default": 100,
+            "hoodie": 100,
+            "pants": 100,
+            "shoe": 100,
+            "jeans": 100,
+            "coat": 100,
+            "jacket": 100
+        },
+        "limit": "new",
+        "exclude": []
+    },
+
+     "beaty:beast": {
+        "id": ["5186"],
+        "price": {
+            "default": 100,
+            "hoodie": 100,
+            "pants": 100,
+            "shoe": 100,
+            "jeans": 100,
+            "coat": 100,
+            "jacket": 100
         },
         "limit": "new",
         "exclude": []
